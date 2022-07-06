@@ -156,14 +156,16 @@ export default function Home({ pathActivePerson, people }) {
         {activePerson?.name ? (
           <>
             <title>{activePerson.name + " - sc07.group"}</title>
+            <meta name="og:site_name" content="sc07.group" />
             <meta
               name="description"
               content={activePerson.name + " makes things; check them out!"}
             />
             <meta
-              property="og:title"
-              content={activePerson.name + " - sc07.group"}
+              name="og:description"
+              content={activePerson.name + " makes things; check them out!"}
             />
+            <meta property="og:title" content={activePerson.name} />
             <meta property="og:type" content="profile" />
             <meta property="og:image" content={activePerson.header} />
           </>
@@ -171,6 +173,7 @@ export default function Home({ pathActivePerson, people }) {
           <>
             <title>sc07.group</title>
             <meta name="description" content="we make things" />
+            <meta name="og:description" content="we make things" />
             <meta property="og:title" content="sc07.group" />
             <meta property="og:type" content="website" />
             <meta
