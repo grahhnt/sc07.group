@@ -1,20 +1,21 @@
-import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
-import Head from 'next/head';
-import '../styles/globals.css'
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import Head from "next/head";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
   },
 });
 
 function sc07Group({ Component, pageProps }) {
-  return <>
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  </>
+  return (
+    <>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
 }
 
-export default sc07Group
+export default sc07Group;
