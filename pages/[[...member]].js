@@ -160,13 +160,26 @@ export default function Home({ pathActivePerson, people }) {
               name="description"
               content={activePerson.name + " makes things; check them out!"}
             />
+            <meta
+              property="og:title"
+              content={activePerson.name + " - sc07.group"}
+            />
+            <meta property="og:type" content="profile" />
+            <meta property="og:image" content={activePerson.header} />
           </>
         ) : (
           <>
             <title>sc07.group</title>
             <meta name="description" content="we make things" />
+            <meta property="og:title" content="sc07.group" />
+            <meta property="og:type" content="website" />
+            <meta
+              property="og:image"
+              content={people[Math.floor(Math.random() * people.length)].header}
+            />
           </>
         )}
+        <meta name="twitter:card" content="summary_large_image"></meta>
       </Head>
       <Container
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
