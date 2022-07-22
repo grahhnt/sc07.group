@@ -33,12 +33,14 @@ import {
 } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
+import TikTokIcon from "../components/TikTokIcon";
 import MastodonIcon from "../components/MastodonIcon";
 import Confetti from "react-confetti";
 import { useRouter } from "next/router";
 import { getPeople } from "../lib/members";
 import { services } from "../lib/services";
 import { deepmerge } from "@mui/utils";
+import TwitchIcon from "../components/TwitchIcon";
 
 const ButtonBase = ({ variant, children, sx, icon, ...props }) => {
   if (!sx) sx = {};
@@ -50,7 +52,7 @@ const ButtonBase = ({ variant, children, sx, icon, ...props }) => {
     margin: "5px",
     padding: "10px",
     position: "relative",
-    transition: "border-color 0.5s, color 0.5s",
+    transition: "border-color 0.5s, color 0.5s, box-shadow 0.5s",
     backgroundColor: "transparent",
     cursor: "pointer",
     color: "#ddd",
@@ -69,6 +71,9 @@ const ButtonBase = ({ variant, children, sx, icon, ...props }) => {
         borderColor: services[variant].color,
       }
     : {};
+  if (services[variant]?.buttonStyle) {
+    style = { ...style, ...services[variant]?.buttonStyle };
+  }
   style = { ...style, ...sx };
 
   return (
@@ -208,7 +213,7 @@ export default function Home({ pathActivePerson, people }) {
             src={"https://sc07.company/img/logos/white.png"}
             style={{ width: "50%" }}
           />
-          <Stack direction="row">
+          <Stack direction="row" flexWrap="wrap" justifyContent="center">
             <ButtonBase
               variant="mastodon"
               icon={<MastodonIcon />}
@@ -239,6 +244,22 @@ export default function Home({ pathActivePerson, people }) {
               target="_blank"
             >
               YouTube
+            </ButtonBase>
+            <ButtonBase
+              variant="tiktok"
+              icon={<TikTokIcon />}
+              href="https://watch.sc07.group/tiktok"
+              target="_blank"
+            >
+              TikTok
+            </ButtonBase>
+            <ButtonBase
+              variant="twitch"
+              icon={<TwitchIcon />}
+              href="https://twitch.tv/sc07_"
+              target="_blank"
+            >
+              Twitch
             </ButtonBase>
           </Stack>
 
